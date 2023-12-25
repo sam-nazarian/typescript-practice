@@ -70,8 +70,53 @@ let employee: { readonly id: number; name: string; retire: (date: Date) => void 
 employee.name = 'Sam';
 // employee.id = 0; //this should not be allowed
 
-// The brackets ([]) are used to denote an index signature in TypeScript. It's a way to specify that an object can have multiple properties, and this syntax defines the type of the keys of these properties.
+// The brackets ([]) are used to denote an index signature (Index Signatures for Objects) in TypeScript. It's a way to specify that an object can have multiple properties, and this syntax defines the type of the keys of these properties.
 let stringValues: { [index: number]: string } = {
   0: 'hello',
   1: 'world',
+};
+
+//TYPE ALIASES: shape of an employee2 obj, helps to make code clear and dry
+type Employee = {
+  readonly id: number;
+  name: string;
+  retire: (date: Date) => void;
+};
+
+let employee2: Employee = {
+  id: 1,
+  name: 'Mosh',
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
+
+// UNION TYPES
+function kgToLbs(weight: number | string): number {
+  // Narrowing
+  if (typeof weight === 'number') {
+    return weight * 2.2;
+  } else {
+    return parseInt(weight) * 2.2;
+  }
+}
+
+kgToLbs(10);
+kgToLbs('10');
+
+// INTERSECTION TYPES
+type Draggable = {
+  drag: () => void;
+};
+
+type Resizable = {
+  resize: () => void;
+};
+
+// Combine types into 1 new type
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {},
 };
