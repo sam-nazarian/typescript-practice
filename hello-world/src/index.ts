@@ -25,7 +25,7 @@ let numbers3 = []; //implicit any
 numbers.forEach((n) => n.toFixed); //shows code completion for the parameter, as vscode knows it's type
 
 // Tuple: fixed length array with a particular type
-let user: [number, string] = [1, 'Mosh'];
+let user: [number, string] = [1, 'Sam'];
 user.push(1);
 // user[1].lastIndexOf
 
@@ -58,3 +58,20 @@ function calculateTax(income: number, taxYear = 2022): number {
 }
 
 calculateTax(10_000, 2022);
+
+//OBJECTS
+let employee: { readonly id: number; name: string; retire: (date: Date) => void } = {
+  id: 1,
+  name: '',
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
+employee.name = 'Sam';
+// employee.id = 0; //this should not be allowed
+
+// The brackets ([]) are used to denote an index signature in TypeScript. It's a way to specify that an object can have multiple properties, and this syntax defines the type of the keys of these properties.
+let stringValues: { [index: number]: string } = {
+  0: 'hello',
+  1: 'world',
+};
