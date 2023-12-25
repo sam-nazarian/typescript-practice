@@ -1,7 +1,7 @@
 //explicitly setting the variable type
-let sales:number = 123_456_789;
-let course:string = 'TypeScript';
-let is_published:boolean = true;
+let sales: number = 123_456_789;
+let course: string = 'TypeScript';
+let is_published: boolean = true;
 
 // don't always have to annotate variables
 // implicitly setting the variable type
@@ -14,15 +14,15 @@ let level;
 level = 'string';
 level = 2;
 
-function render(document:any){
+function render(document: any) {
   console.log(document);
 }
 
-let numbers = [1,2,3]; //implicitly setting the variable type to numbers
-let numbers2: number[] = [1,2,3]; //explicitly setting the variable type to numbers
+let numbers = [1, 2, 3]; //implicitly setting the variable type to numbers
+let numbers2: number[] = [1, 2, 3]; //explicitly setting the variable type to numbers
 let numbers3 = []; //implicit any
- 
-numbers.forEach((n)=> n.toFixed); //shows code completion for the parameter, as vscode knows it's type
+
+numbers.forEach((n) => n.toFixed); //shows code completion for the parameter, as vscode knows it's type
 
 // Tuple: fixed length array with a particular type
 let user: [number, string] = [1, 'Mosh'];
@@ -33,12 +33,28 @@ user.push(1);
 // const medium = 2;
 // const large = 3;
 
+// ENUMS
 
 // By default, enums are numeric. Numeric enum members have auto-incrementing values if they are not manually set
-
 // essentially creating a type with different values
-const enum Size {Small=1, Medium, Large};
+const enum Size {
+  Small = 1,
+  Medium,
+  Large,
+}
 
 //:Size is the type of variable here.
 let mySize: Size = Size.Medium;
 console.log(mySize);
+
+// FUNCTIONS
+// OPTIONAL PARAMETER     ?: number
+function calculateTax(income: number, taxYear = 2022): number {
+  if (taxYear < 2022) {
+    return income * 1.2;
+  }
+
+  return income * 1.3;
+}
+
+calculateTax(10_000, 2022);
