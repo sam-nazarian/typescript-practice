@@ -120,3 +120,9 @@ let textBox: UIWidget = {
   drag: () => {},
   resize: () => {},
 };
+
+// Literal (exact, specific)
+type Quantity = 50 | 100; //Literal type, instead something like number or string, it says 50 or 100
+let quantity: Quantity = 100;
+
+type Metric = 'cm' | 'inch'; //Literal types don't have to be numbers, they can be strings
