@@ -126,3 +126,12 @@ type Quantity = 50 | 100; //Literal type, instead something like number or strin
 let quantity: Quantity = 100;
 
 type Metric = 'cm' | 'inch'; //Literal types don't have to be numbers, they can be strings
+
+// NULLABLE TYPES
+function greet(name: string | null | undefined) {
+  if (name) console.log(name.toUpperCase());
+  else console.log('Hola!');
+}
+
+greet(null);
+greet(undefined);
