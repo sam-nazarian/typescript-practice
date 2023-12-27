@@ -135,3 +135,37 @@ function greet(name: string | null | undefined) {
 
 greet(null);
 greet(undefined);
+
+// OPTIONAL CHAINING:
+
+// type is anything that comes after the ":"
+type Customer = {
+  birthday?: Date;
+};
+
+function getCustomer(id: number): Customer | null | undefined {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+
+// Optional property access operator is the "?"
+//if the customer is NOT null or undefined then add the ".birthday", if it is null or undefined then short circuit
+console.log(customer?.birthday?.getFullYear());
+
+if (customer !== null && customer !== undefined) {
+  console.log(customer?.birthday?.getFullYear());
+}
+
+//Optional element access operator
+// if (customer !== null && customer !== undefined) customer[0];
+// customers?.[0]
+
+//Optional call
+let log: any = (message: string) => console.log(message);
+const log2: any = null;
+
+// log2('a');
+
+// only executes if log is referrencing an actual function, otherwise will get undefined
+log2?.('a');
